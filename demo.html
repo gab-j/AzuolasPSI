@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Ąžuolas</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/fontawesome.min.css">
+        <link rel="stylesheet" href="css/duotone.min.css">
+        <link rel="stylesheet" href="css/solid.min.css">
+        <link rel="stylesheet" href="css/demo.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?lang=en&family=Product+Sans|Roboto:400,700"/>
+		<link rel="stylesheet" type="text/css" href="azuolocss.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.4.5/fuse.min.js"></script>
+
+        <script>
+            const lecturers = [
+                { name: "Vytautas Valaitis", klevas: "http://klevas.mif.vu.lt/~valaitis/", mail: "valaitisv@gmail.com"},
+                { name: "Karolis Petrauskas", klevas: "https://klevas.mif.vu.lt/~karolis"},
+                { name: "Karolis Uosis", klevas: "https://klevas.mif.vu.lt/~kuosis/" },
+                { name: "Romas Baronas", klevas: "http://klevas.mif.vu.lt/~baronas/" }
+            ];
+
+            const fuse = new Fuse(lecturers, {
+                shouldSort: true,
+                threshold: 0.4,
+                location: 0,
+                distance: 100,
+                maxPatternLength: 32,
+                minMatchCharLength: 1,
+                keys: [ "name" ]
+            });
+
+            function addAppendDiv(appendTo, fn) {
+                let div = document.createElement("div");
+                fn(div);
+                appendTo.appendChild(div);
+            }
+
+            function addAccordionElem(container, lect) {
+                let accordion = document.createElement("div");
+                accordion.className = "accordion";
+                let button = document.createElement("button");
+                button.className = "accordion-button";
+                button.textContent = lect.name;
+                button.addEventListener("click", () => {
+                    button.classList.toggle("active");
+                    let panel = button.nextElementSibling;
+                    let display = panel.style.display;
+                    if (display === "" || display === "none")
+                        panel.style.display = "block";
+                    else
+                        panel.style.display = "none";
+                });
+                accordion.appendChild(button);
+
+                let pane = document.createElement("div");
+                pane.className = "accordion-pane";
+
+                addAppendDiv(pane, (div) => {
+                    div.style.display = "flex";
+                    let browser_ico = document.createElement("i");
+                    browser_ico.className = "fad fa-browser accordion-icon"
+                    div.appendChild(browser_ico);
+
+                    let klevas = document.createElement("a");
+                    klevas.href = lect.klevas;
+                    klevas.textContent = "klevo puslapis";
+                    div.appendChild(klevas);
+                });
+
+                if(lect.mail)
+                    addAppendDiv(pane, (div) => {
+                        div.style.display = "flex";
+
+                        let email_ico = document.createElement("i");
+                        email_ico.className = "fad fa-at accordion-icon"
+                        div.appendChild(email_ico);
+
+                        let mail = document.createElement("a");
+                        mail.href = "mailto:" + lect.mail;
+                        mail.textContent = lect.mail;
+                        div.appendChild(mail);
+                    });
+
+                accordion.appendChild(pane);
+                container.appendChild(accordion);
+            }
+
+            function onLecturerInputChanged() {
+                let input = document.getElementById("lecturerInput");
+                let filter = input.value.toLowerCase();
+                let container = document.getElementById("lecturerContainer");
+
+                container.innerHTML = "";
+                fuse.search(filter).forEach((l) => {
+                    addAccordionElem(container, l);
+                });
+            }
+        </script>
+	</head>
+	<body>
+        <header>
+				<div id="buttonContainer">
+					<div class="button">
+						<a href="demo.html"><span id="buttonText">Dėstytojų paieška</span></a>
+					</div>
+					<div class="button">
+						<a href="demo-calendar.html"><span id="buttonText">Mano tvarkaraščiai</span></a>
+					</div>
+				</div>
+                
+                <div align="center" id="searchTitleDiv">
+					<img src="leaf.png" width="100"></img>
+					<div class="center" id="title">ĄŽUOLAS</div>
+				</div>
+        </header>
+        <main>
+            <input
+                type="text"
+                id="lecturerInput"
+                oninput="onLecturerInputChanged()"
+                placeholder="Dėstytojo vardas ar pavardė"
+            />
+            <div class="full-width" id="lecturerContainer"> </div>
+        </main>
+	</body>
+</html>
