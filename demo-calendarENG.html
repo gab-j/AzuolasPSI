@@ -45,9 +45,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/locales/lt.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/locales/ENG.js"></script>
 
-    <script src="demo-calendar.js"></script>
+    <script src="demo-calendarENG.js"></script>
 
     <style></style>
   </head>
@@ -55,11 +55,13 @@
     <header>
       <div id="buttonContainer">
         <div class="button">
-          <a href="demo.html"><span id="buttonText">Dėstytojų paieška</span></a>
+          <a href="demoENG.html"
+            ><span id="buttonText">Lecturers' search</span></a
+          >
         </div>
         <div class="button">
-          <a href="demo-calendar.html"
-            ><span id="buttonText">Mano tvarkaraščiai</span></a
+          <a href="demo-calendarENG.html"
+            ><span id="buttonText">My schedules</span></a
           >
         </div>
         <div align="center" id="calendarTitleDiv">
@@ -71,14 +73,14 @@
       <div class="cal" id="calendar"></div>
     </main>
     <div class="darkTheme" align="right">
-      <em background-color="pink">Kalba </em>
+      <em background-color="pink">Language</em>
       <button button class="off">
         <a href="demo-calendar.html"><span id="buttonText">LT</span></a>
       </button>
       <button button class="off">
         <a href="demo-calendarENG.html"><span id="buttonText">ENG</span></a>
       </button>
-      <em background-color="pink">Tamsioji tema</em
+      <em background-color="pink">Dark mode</em
       ><button class="off" onclick="switchMode()">
         <i class="fa fa-power-off"></i>
       </button>
