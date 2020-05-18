@@ -1,120 +1,138 @@
 main {
-	align-items: center;
-	display: flex;
-	flex-direction: column;
-	background: transparent;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
 }
 
 body {
-	background: #1d1e1f;
-}	
+  background: #1d1e1f;
+}
+
+.light {
+  background: rgb(241, 237, 237);
+}
 
 #buttonContainer {
-    display: flex;
-	margin-top: 1%;
-	margin-left: 2%;
-	margin-right: 5%;
-    margin-bottom: 2%;
+  display: flex;
+  margin-top: 1%;
+  margin-left: 2%;
+  margin-right: 5%;
+  margin-bottom: 2%;
 }
 
 .button {
-    flex: 0 0 12%;
-	background-color: #3BCB7C;
-	height: 60px;
-	text-align: center;
-	margin-right: 25px;
-	border-radius: 20px;
+  flex: 0 0 12%;
+  background-color: #3bcb7c;
+  height: 60px;
+  text-align: center;
+  margin-right: 25px;
+  border-radius: 20px;
 }
 
-div.button a:link, a:visited {
-	border-radius: 20px;
-	background-color: #6FFFB0;
-	height: 40px;
-	width: 100%;
-	padding-top: 20px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
+div.button a:link,
+a:visited {
+  border-radius: 20px;
+  background-color: #6fffb0;
+  height: 40px;
+  width: 100%;
+  padding-top: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 
-div.button a:hover, a:active {
-	background-color: #ddffdd;
+div.button a:hover,
+a:active {
+  background-color: #ddffdd;
 }
 
 #buttonText {
-    font-family: "";
-	font-size: 20px;
-	font-weight: bold;
-	color: black;
+  font-family: "";
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
 }
 
 #title {
-    text-align: center;
-    font-size: 50pt;
-    color: #ffffff;
+  text-align: center;
+  font-size: 50pt;
+  color: #ffffff;
 }
 
 #searchTitleDiv {
-    margin-bottom: 70px
+  margin-bottom: 70px;
 }
 
 #calendarTitleDiv {
-	flex: 0 0 50%;
+  flex: 0 0 50%;
 }
 
 input {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #6FFFB0;
-    color: #f8f8f8;
-	padding-top: 10px;
-	padding-left: 10px;
-    padding-bottom: 7px;
-    font-size: 2rem;
-    min-width: 70%;
-    margin-bottom: 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #6fffb0;
+  color: darkblue;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 7px;
+  font-size: 2rem;
+  min-width: 70%;
+  margin-bottom: 20px;
 }
 
 .accordion-button {
-    color: #f8f8f8;
-    cursor: pointer;
-    background: transparent;
-    padding: 18px;
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: 0.4s;
-    border-bottom: 1px solid rgba(255,255,255,0.33);
-    margin-bottom: 10px;
-    width: 100%;
+  color: darkblue;
+  cursor: pointer;
+  background: transparent;
+  padding: 18px;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.33);
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 .accordion {
-    width: 130%;
-    margin: auto;
+  width: 130%;
+  margin: auto;
 }
 
 .accordion-button:after {
-    content: "\25BC";
-    font-size: 13px;
-    color: #6FFFB0;
-    float: right;
-    margin-left: 5px;
+  content: "\25BC";
+  font-size: 18px;
+  color: #6fffb0;
+  float: right;
+  margin-left: 5px;
 }
 
-
 .active:after {
-    content: "\25B2";
-    color: #6FFFB0;
+  content: "\25B2";
+  color: #6fffb0;
 }
 
 .accordion-pane {
-    width: 50%;
-    display: none;
-    padding: 18px;
+  width: 50%;
+  display: none;
+  padding: 18px;
 }
 
 .accordion-icon {
-    color: #6FFFB0;
-    margin-right: 10px;
+  color: #6fffb0;
+  margin-right: 10px;
+}
+.darkTheme {
+  padding-top: 200px;
+  padding-bottom: 20px;
+  color: #6fffb0;
+  font-size: x-large;
+  font-weight: 800;
+}
+.off {
+  width: 50px;
+  height: 50px;
+  background-color: pink;
+  border-radius: 50%;
 }

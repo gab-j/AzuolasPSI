@@ -1,239 +1,80 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-		<title>Ąžuolas</title>
+    <title>Ąžuolas</title>
 
-		<link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/fontawesome.min.css">
-        <link rel="stylesheet" href="css/duotone.min.css">
-        <link rel="stylesheet" href="css/solid.min.css">
-        <link rel="stylesheet" href="css/demo.css">
-        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css'/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.css"/>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?lang=en&family=Product+Sans|Roboto:400,700"/>
-		<link rel="stylesheet" type="text/css" href="azuolocss.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/fontawesome.min.css" />
+    <link rel="stylesheet" href="css/duotone.min.css" />
+    <link rel="stylesheet" href="css/solid.min.css" />
+    <link rel="stylesheet" href="css/demo.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?lang=en&family=Product+Sans|Roboto:400,700"
+    />
+    <link rel="stylesheet" type="text/css" href="azuolocss.css" />
+    <link rel="stylesheet" type="text/css" href="demo-calendar.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/locales/lt.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/timegrid/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/list/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/locales/lt.js"></script>
 
-        <script>
-            const pogrupis = 1;
-            const days = ['PIR', 'ANT', 'TRE', 'KET', 'PEN', 'ŠEŠ', "SEK"];
+    <script src="demo-calendar.js"></script>
 
-            function monthGridHeader(date) {
-                return `<div class="month-day">${days[date.getDay() - 1]}</div>`;
-            }
-
-            function weekGridHeader(date) {
-                return `<div><div class="week-day">${days[date.getDay() - 1]}</div><div class="month-day">${date.getDate()}</div></div>`;
-            }
-
-            function unixTs(date) {
-                return Math.round(date.getTime() / 1000);
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                plugins: [ 'timeGrid', 'dayGrid', 'list' ],
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-                },
-                locale: 'lt',
-
-                contentHeight: 'auto',
-
-                minTime: "08:00:00",
-                maxTime: "22:00:00",
-                slotDuration: "01:00:00",
-
-                noEventsMessage: 'Nėra rodomų įvykių',
-
-                allDaySlot: false,
-                slotEventOverlap: false,
-                weekends: false,
-                defaultView: 'timeGridWeek',
-                views: {
-                    dayGrid: {
-                        columnHeaderHtml: monthGridHeader,
-                        titleFormat: {
-                            month: "long"
-                        }
-                    },
-                    timeGrid: {
-                        columnHeaderHtml: weekGridHeader,
-                        titleFormat: {
-                            month: "long",
-                            day: "numeric"
-                        }
-                    }
-                },
-                events: function(info, successCallback, failureCallback) {
-                    console.log("request");
-                    const proxy = "https://cors-anywhere.herokuapp.com/";
-                    const xhr = new XMLHttpRequest();
-                    const url = proxy + 'https://tvarkarasciai.vu.lt/mif/ajax_fullcalendar_events/programu-sistemos-2k-5gr-2019/group/115/';
-                    xhr.open("GET", url, true);
-                    xhr.setRequestHeader("Origin", 'tvarkarasciai.vu.lt');
-
-                    xhr.send({
-                        'start': unixTs(info.start),
-                        'end': unixTs(info.end)
-                    });
-
-                    xhr.onreadystatechange = (e) => {
-                        const json = JSON.parse(xhr.responseText);
-
-                        const filtered = json.events.filter(e => {
-                            if(pogrupis == 1)
-                                return e.title.indexOf("Pogrupiai: 2") == -1;
-                            else if(pogrupis == 2)
-                                return e.title.indexOf("Pogrupiai: 1") == -1;
-                        });
-                        
-                        filtered.forEach(e => {
-							<!-- paskaitos pavadinimas -->
-							var  fullStr = e.title;
-                            var end = fullStr.lastIndexOf("</a>");
-                            var start = fullStr.lastIndexOf(">", end) + 1;
-                            e.title = fullStr.substr(start, end - start);
-							
-							<!-- dėstytojas -->
-                            var start2 = fullStr.indexOf("data-academics");;
-                            var start2 = fullStr.indexOf(">", start2) + 1;
-                            var end2 = fullStr.indexOf("</a>", start2);
-                            var str2 = fullStr.substr(start2, end2 - start2);
-                            e.title = e.title.concat('\n', str2);
-                        });
-                        successCallback(filtered);
-                    }
-                }
-            });
-            calendar.render();
-            });
-        </script>
-
-        <style>
-            .cal {
-                width: 90%;
-                margin: auto;
-                padding-bottom: 2rem;
-            }
-
-            .week-day {
-                font-size: 11px;
-                font-weight: 600;
-            }
-
-            .month-day {
-                font-size: 26px;
-                font-weight: 600;
-            }
-
-            .fc-widget-header {
-                background: transparent !important;
-            }
-
-            .fc-unthemed .fc-list-item:hover td {
-                background-color: #2d2e30 !important;
-            }
-
-            .fc-event {
-                background-color: #4bba86 !important;
-                border: none !important;
-            }
-
-            .fc-time {
-                font-weight: 600;
-            }
-
-            .fc-content {
-                color: #212121 !important;
-                font-weight: 600;
-				padding: 10px;
-            }
-
-            .fc-widget-header, .fc-axis {
-                border: none !important;
-                color: #b5b5b5;
-            }
-			
-            .fc-center {
-                color: #eeeeee;
-            }
-
-            tr {
-                height: 48px;
-            }
-
-            :not(.fc-axis) td {
-                border-top: 1px solid #fff;
-            }
-
-            .fc-list-empty {
-                background: transparent !important;
-                font-size: 24px;
-                font-weight: 600;
-            }
-
-            .fc-list-heading {
-                background-color: #313235 !important;
-            }
-
-            .fc-today {
-                background: #313235 !important;
-            }
-
-            .fc-unthemed .fc-content,.fc-unthemed .fc-divider,.fc-unthemed .fc-list-heading td,.fc-unthemed .fc-list-view,.fc-unthemed .fc-popover,.fc-unthemed .fc-row,.fc-unthemed tbody,.fc-unthemed td,.fc-unthemed th,.fc-unthemed thead{border-color:#393c3f}
-        
-            .fc-button-primary {
-                background-color: #313235;
-                border-color: transparent;
-                color: #f5f5f5;
-            }
-
-            :not(:disabled).fc-button-primary.fc-button-active, :not(:disabled).fc-button-primary:active {
-                background-color: #8ab4f8;
-            }
-
-            :not(:disabled).fc-button-primary:hover, :not(:disabled).fc-button:hover {
-                background-color: #2d2e30 !important;
-                border: none;
-            }
-
-            :disabled.fc-button-primary {
-                background-color: #313235;
-                border-color: transparent;
-            }
-        </style>
-	</head>
-	<body>
-        <header>
-				<div id="buttonContainer">
-					<div class="button">
-						<a href="demo.html"><span id="buttonText">Dėstytojų paieška</span></a>
-					</div>
-					<div class="button">
-						<a href="demo-calendar.html"><span id="buttonText">Mano tvarkaraščiai</span></a>
-					</div>
-					<div align="center" id="calendarTitleDiv">
-						<div class="center" id="title">ĄŽUOLAS</div>
-					</div>
-				</div>
-                
-        </header>
-        <main>
-            <div class="cal" id="calendar"></div>
-        </main>
-	</body>
+    <style></style>
+  </head>
+  <body>
+    <header>
+      <div id="buttonContainer">
+        <div class="button">
+          <a href="demo.html"><span id="buttonText">Dėstytojų paieška</span></a>
+        </div>
+        <div class="button">
+          <a href="demo-calendar.html"
+            ><span id="buttonText">Mano tvarkaraščiai</span></a
+          >
+        </div>
+        <div align="center" id="calendarTitleDiv">
+          <div class="center" id="title">ĄŽUOLAS</div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="cal" id="calendar"></div>
+    </main>
+    <div class="darkTheme" align="right">
+      <em background-color="pink">Dark mode </em
+      ><button class="off" onclick="switchMode()">
+        <i class="fa fa-power-off"></i>
+      </button>
+    </div>
+  </body>
 </html>
