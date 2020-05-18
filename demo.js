@@ -79,9 +79,14 @@ function onLecturerInputChanged() {
   let container = document.getElementById("lecturerContainer");
 
   container.innerHTML = "";
-  fuse.search(filter).forEach((l) => {
-    addAccordionElem(container, l);
-  });
+  let results = fuse.search(filter);
+  if (results.length == 0) {
+    if (input.value.length > 0) alert("Nėra paiešką atitinkančių rezultatų");
+  } else {
+    results.forEach((l) => {
+      addAccordionElem(container, l);
+    });
+  }
 }
 
 function switchMode() {
