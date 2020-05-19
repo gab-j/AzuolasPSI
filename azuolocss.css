@@ -130,9 +130,16 @@ input {
   font-size: x-large;
   font-weight: 800;
 }
+
 .off {
   width: 60px;
   height: 60px;
   background-color: pink;
   border-radius: 50%;
+}
+
+/* change text color in dark mode */
+body.a,
+body.button {
+  color: white;
 }
